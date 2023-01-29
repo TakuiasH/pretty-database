@@ -1,4 +1,4 @@
-package com.takuiash.auth.database;
+package org.pretty.database;
 
 import java.util.Map;
 
