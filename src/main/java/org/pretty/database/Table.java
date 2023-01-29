@@ -1,4 +1,4 @@
-package org.pretty.database;
+package com.takuiash.auth.database;
 
 import java.util.Map;
 
@@ -18,11 +18,23 @@ public class Table {
 		return get(row).toString();
 	}
 	
-	public int getInt(String row) {
-		return Integer.parseInt(getString(row));
+	public Integer getInt(String row) {
+		try {
+			return Integer.parseInt(getString(row));
+		} catch (NumberFormatException e) {
+			return null;
+		}
 	}
 	
-	public boolean getBoolean(String row) {
+	public Long getLong(String row) {
+		try {
+			return Long.parseLong(getString(row));
+		} catch (NumberFormatException e) {
+			return null;
+		}
+	}
+	
+	public Boolean getBoolean(String row) {
 		return Boolean.parseBoolean(getString(row));
 	}
 	
