@@ -1,6 +1,7 @@
 package org.pretty.database;
 
 import java.util.Map;
+import java.util.UUID;
 
 public class Table {
 	
@@ -21,6 +22,14 @@ public class Table {
 	public Integer getInt(String row) {
 		try {
 			return Integer.parseInt(getString(row));
+		} catch (NumberFormatException e) {
+			return null;
+		}
+	}
+	
+	public UUID getUUID(String row) {
+		try {
+			return UUID.fromString(getString(row));
 		} catch (NumberFormatException e) {
 			return null;
 		}

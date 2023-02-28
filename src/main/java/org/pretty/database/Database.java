@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class Database {
 
@@ -88,7 +89,10 @@ public class Database {
 			PreparedStatement st = getConnection().prepareStatement(query);
 
 		    for( int i = 0; i < arguments.length;i++){
-		        st.setObject(i+1,arguments[i]);
+		    	if(arguments[i] instanceof UUID)
+			        st.setObject(i+1,arguments[i].toString());
+		    	else
+		    		st.setObject(i+1,arguments[i]);
 		    }
 			
 			ResultSet rs = st.executeQuery();
@@ -118,7 +122,10 @@ public class Database {
 			PreparedStatement st = getConnection().prepareStatement(query);
 
 		    for( int i = 0; i < arguments.length;i++){
-		        st.setObject(i+1,arguments[i]);
+		    	if(arguments[i] instanceof UUID)
+			        st.setObject(i+1,arguments[i].toString());
+		    	else
+		    		st.setObject(i+1,arguments[i]);
 		    }
 			
 			int result = st.executeUpdate();
